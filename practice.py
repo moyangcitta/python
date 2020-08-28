@@ -1,4 +1,17 @@
+from PIL import Image
+from PIL import ImageFilter
+im = Image.open('birdnest.jpg')
+om = im.filter(ImageFilter.CONTOUR)
+om.save('birdnestContour.jpg')
 
+# from PIL import Image
+# from PIL import ImageFilter
+# # im = Image.open("D:\\code\\python\\023c6f342789d222064450248fb0ad3b.jpg")
+# im = Image.open("023c6f342789d222064450248fb0ad3b.jpg")
+# im.save("tiger.png")
+# r,g,b = im.split()
+# om = im.filter(ImageFilter.CONTOUR)
+# om.save("tigerContour.jpg")
 
 # fname = input("请输入要写入的文件：")
 # fo = open(fname,"w+")
