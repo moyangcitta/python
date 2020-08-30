@@ -1,8 +1,20 @@
-from PIL import Image
-from PIL import ImageFilter
-im = Image.open('birdnest.jpg')
-om = im.filter(ImageFilter.CONTOUR)
-om.save('birdnestContour.jpg')
+def findMinAndMax(L):
+    if L != []:
+        (getMin,getMax) = (L[0],L[0])
+        for i in L:
+            if getMax < i:
+                getMax = i
+            if getMin > i:
+                getMin = i
+        return(getMin,getMax)
+    else:
+        return(None,None)
+
+# from PIL import Image
+# from PIL import ImageFilter
+# im = Image.open('birdnest.jpg')
+# om = im.filter(ImageFilter.CONTOUR)
+# om.save('birdnestContour.jpg')
 
 # from PIL import Image
 # from PIL import ImageFilter
