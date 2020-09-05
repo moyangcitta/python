@@ -35,7 +35,7 @@ def count_h():                                          #计算每次行移动�
             if count_1[j] == count_2[j]:
                 count_1[j] = count_1[j] + count_2[j]
             elif count_1[j] == 0:
-                count_1[j] == count_2[j]
+                count_1[j] = count_2[j]
             else:
                 continue
         i += 1
@@ -44,7 +44,7 @@ def count_h():                                          #计算每次行移动�
         count_2 = location[i + 1]
         for j in count_1,count_2:
             if count_1[j] == 0:
-                count_1[j] == count_2[j]
+                count_1[j] = count_2[j]
             else:
                 continue
 
@@ -55,7 +55,7 @@ def count_l():                                          #计算每次列移动�
             if count[j] == count[j+1]:
                 count[j] = count[j] + count[j+1]
             elif count[j] == 0:
-                count[j] == count[j+1]
+                count[j] = count[j+1]
             else:
                 continue
         i += 1
@@ -63,22 +63,55 @@ def count_l():                                          #计算每次列移动�
         count = location[i]
         for j in range(3):
             if count[j] == 0:
-                count[j] == count[j+1]
+                count[j] = count[j+1]
             else:
                 continue
 
 def direction_control(a):                               #方向控制
-    if a == "w":                                        #自顶向下，列方向相加,先提交行，在提交列
-
+    if a == "w":                                        #自顶向下，列方向相加,先提交行，再提交列
+        count_h()
     elif a == "a":
+        count_l()
     elif a == "s":
+        count_h()
+        i = 4
+        while i>1:
+            count_1 = location[i]
+            count_2 = location[i - 1]
+            for j in count_1, count_2:
+                if count_1[j] == 0:
+                    count_1[j] = count_2[j]
+                else:
+                    continue
+            i -= 1
     elif a == "d":
+        count_l()
+        i = 4
+        while i>1:
+            count = location[i]
+            while j>0:
+                if count[j] == 0:
+                    count[j] = count[j-1]
+                else:
+                    continue
+            i -= 1
+
+def game_end():
+    for i in location:
+        location_sub = location[i]
+        for j in location_sub:
+            if location_sub[j] == 2048:
+                return 1
+
 
 def main():
     while 1:
         number_make()
         direction_control(input("请输入方向："))
-
+        if game_end() == 1:
+            print("游戏胜利")
+        else:
+            print("游戏结束")
 
 main()
 
