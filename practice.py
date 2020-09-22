@@ -1,14 +1,92 @@
-def findMinAndMax(L):
-    if L != []:
-        (getMin,getMax) = (L[0],L[0])
-        for i in L:
-            if getMax < i:
-                getMax = i
-            if getMin > i:
-                getMin = i
-        return(getMin,getMax)
+import math
+number = []
+tag = 0
+for i in [1,2,3,4]:
+    for j in [1,2,3,4]:
+        if j == i:
+            break
+        for k in [1,2,3,4]:
+            if k == i,j:
+                break
+            else:
+                number[tag] = i*100 + j*10 + k
+                tag += 1
+for i in len(number)-1:
+    a = number[i]
+    b = number[i+1]
+    if a > b:
+        c = a
+        number[i+1] = c
+        number[i] = b
+
+j = 1
+sum = 0
+for i in range(5):
+    j = j * (i + 1)
+    sum += j
+print(sum)
+
+number = eval(input("请输入一个正整数："))
+while True:
+    if number%2 == 0:
+        number = number/2
+        print(number)
+    elif number == 1:
+        break
     else:
-        return(None,None)
+        number = number * 3 + 1
+        print(number)
+
+stature = input("请输入身高:")
+weight = input("请输入体重:")
+BMI = eval(weight)/(pow(eval(stature),2))
+if BMI >= 28:
+    print("fat")
+elif BMI >= 24:
+    print("overweight")
+elif BMI >= 18.5:
+    print("normal")
+else:
+    print("too thin")
+
+for i in range(15):
+    i *= 20
+    print(i,end = " ")
+    j = 5/9 * (i - 32)
+    print("{:.2f}".format(j))
+
+
+# #杨辉三角形
+# def triangles():
+#     while 1:
+#         n += 1
+#         yield n
+#         for i in range(t):
+#             n.append(0)
+#             if i > 0:
+#                 n[i] = n[i] + n[i - 1]
+# n = 0
+# results = []
+# for t in triangles():
+#     results.append(t)
+#     n = n + 1
+#     if n == 10:
+#         break
+#
+# for t in results:
+#     print(t)
+
+        # def findMinAndMax(L):
+#     if L != []:
+#         (getMin,getMax) = (L[0],L[0])
+#         for i in L:
+#             if getMax < i:
+#                 getMax = i
+#             if getMin > i:
+#                 getMin = i
+#         return(getMin,getMax)
+#     else:
+#         return(None,None)
 
 # from PIL import Image
 # from PIL import ImageFilter
